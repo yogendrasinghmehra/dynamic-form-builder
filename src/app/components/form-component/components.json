@@ -1,0 +1,36 @@
+
+ 
+  [  
+    {  
+      "id": "1",  
+      "componentName": "TextboxControlComponent",  
+      "controlName": "TextBox",  
+      "controlType": "input",
+      "x": 0, 
+      "y": 0, 
+      "cols": 1, 
+      "rows": 1
+    },
+    {  
+      "id": "2",  
+      "componentName": "ButtonControlComponent",  
+      "controlName": "Button",  
+      "controlType": "input",
+      "x": 0, 
+      "y": 0, 
+      "cols": 1, 
+      "rows": 1
+    },
+    {  
+      "id": "3",  
+      "componentName": "DropdownControlComponent",  
+      "controlName": "Dropdown",  
+      "controlType": "input",
+      "x": 0, 
+      "y": 0, 
+      "cols": 1, 
+      "rows": 1
+    }
+  ]
+
+ 

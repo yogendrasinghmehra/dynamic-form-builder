@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-9">
+    <gridster [options]="options">
+      <gridster-item [item]="item" *ngFor="let item of items">        
+        <div class="gridster-item-content">
+          <ng-container #container></ng-container>
+        </div>
+      </gridster-item>
+    </gridster>
+  </div>
+  <div class="col-md-3">
+    
+<div class="card mt-2"  *ngFor="let row of data; let index = index" 
+[draggable]="true" 
+[class.dragging]="index === this.draggingIndex"
+(dragstart)="onDragStart(index)" 
+(dragend)="onDragEnd(index)">
+  <div class="card-body text-center">
+    {{row.controlName}}
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+ 
