@@ -1,0 +1,34 @@
+
+
+<div class="modal-header">
+    <h4 class="modal-title text-center">Textbox Control Settings</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismissAll('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+            <button ngbNavLink>Validations</button>
+            <ng-template ngbNavContent>
+                <form [formGroup] = "textboxSettingFormGroup">
+                    <div class="form-group">
+                        <label class="mb-1">Height</label>
+                        <input class="text" class="form-control" formControlName="height">
+                    </div>
+                    <div class="mt-2">
+                        <input type="button" class="btn btn-sm btn-success" value="Submit" (click)="onFormSubmit()">
+                    </div>
+                   
+                </form>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+            <button ngbNavLink>Settings</button>
+            <ng-template ngbNavContent>
+               
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    
+    <input type="button" class="btn btn-sm btn-success" value="Submit" (click)="onFormSubmit()">
+</div>

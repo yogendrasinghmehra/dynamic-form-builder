@@ -4,32 +4,50 @@
     {  
       "id": "1",  
       "componentName": "TextboxControlComponent",  
-      "controlName": "TextBox",  
-      "controlType": "input",
+      "controlType": "Textbox",
+      "controlName": "Textbox",
       "x": 0, 
       "y": 0, 
-      "cols": 1, 
-      "rows": 1
+      "cols": 3, 
+      "rows": 1,
+      "settings":{
+
+      },
+      "validations":{
+
+      }
     },
     {  
       "id": "2",  
       "componentName": "ButtonControlComponent",  
-      "controlName": "Button",  
-      "controlType": "input",
+      "controlType": "Button",
+      "controlName": "Button",
       "x": 0, 
       "y": 0, 
-      "cols": 1, 
-      "rows": 1
+      "cols": 3, 
+      "rows": 1,
+      "settings":{
+
+      },
+      "validations":{
+        
+      }
     },
     {  
       "id": "3",  
       "componentName": "DropdownControlComponent",  
-      "controlName": "Dropdown",  
-      "controlType": "input",
+      "controlType": "Dropdown",
+      "controlName": "Dropdown",
       "x": 0, 
       "y": 0, 
-      "cols": 1, 
-      "rows": 1
+      "cols": 3, 
+      "rows": 1,
+      "settings":{
+
+      },
+      "validations":{
+        
+      }
     }
   ]
 

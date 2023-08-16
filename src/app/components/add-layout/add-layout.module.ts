@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout.component';
+import { AddLayoutComponent } from './add-layout.component';
 import { GridsterModule } from 'angular-gridster2';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    AddLayoutComponent
   ],
   imports: [
     CommonModule,
     GridsterModule
   ],
-  exports:[LayoutComponent],
+  exports:[AddLayoutComponent],
 })
-export class LayoutModule { }
+export class AddLayoutModule { }

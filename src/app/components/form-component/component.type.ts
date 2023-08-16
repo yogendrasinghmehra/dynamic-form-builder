@@ -6,6 +6,19 @@ export interface ComponentDetails {
     x:number,
     y:number,
     rows:number,
-    cols:number
+    cols:number,
+    settings:Settings,
+    validations:Validations
+  }
+
+  export interface Settings
+  {
+
+  }
+  
+
+  export interface Validations
+  {
+    
   }
   

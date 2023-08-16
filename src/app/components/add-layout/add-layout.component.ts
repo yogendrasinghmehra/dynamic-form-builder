@@ -1,14 +1,16 @@
-import {  Component, ComponentFactoryResolver, Input, OnInit, QueryList, ViewChild, ViewChildren, ViewContainerRef } from '@angular/core';
+import {  Component, Input, OnInit, ViewChildren, ViewContainerRef } from '@angular/core';
 import { CompactType, DisplayGrid, GridType, GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { TextboxControlComponent } from '../form-component/textbox-control/textbox-control.component';
 import { ButtonControlComponent } from '../form-component/button-control/button-control.component';
 import { DropdownControlComponent } from '../form-component/dropdown-control/dropdown-control.component';
 import { ComponentDetails } from '../form-component/component.type';
 import ComponentData from '../form-component/components.json';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TextboxSettingsComponent } from '../form-component/control-setting/textbox-settings/textbox-settings.component';
 
 const componentConfig = [
 { 
-  name:"TextBox",
+  name:"Textbox",
   component: TextboxControlComponent
 },
 {
@@ -23,34 +25,46 @@ const componentConfig = [
 
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  selector: 'app-add-layout',
+  templateUrl: './add-layout.component.html',
+  styleUrls: ['./add-layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class AddLayoutComponent implements OnInit {
   @Input() ComponentName:string;
   @ViewChildren('container',{ read: ViewContainerRef }) container:any;
   options!: GridsterConfig;
   items: Array<GridsterItem> = [];
   data :ComponentDetails[] = ComponentData;
   draggingIndex:number;
-  constructor() { }
+  constructor(private modalService: NgbModal,config: NgbModalConfig) { 
+    config.backdrop = 'static';
+		config.keyboard = false;
+    config.size = 'lg';
+    config.centered=true;
+  }
   
   ngOnInit() {
    
     this.options = {
-      gridType: GridType.ScrollVertical,
-      compactType: CompactType.None,
+      gridType: GridType.Fit,
+      compactType: CompactType.CompactLeft,
       displayGrid:DisplayGrid.None,
       minCols: 6,
       minRows: 6,
       margin:1,
       mobileBreakpoint: 640,     
+      pushItems: true, 
       setGridSize: true,
-      pushItems: true,
-      // fixedColWidth: 10,
-      // fixedRowHeight: 10,
-
+      maxItemCols: 100,
+      minItemCols: 1,
+      maxItemRows: 100,
+      minItemRows: 1,
+      maxItemArea: 2500,
+      minItemArea: 1,
+      defaultItemCols: 1,
+      defaultItemRows: 1,
+      addEmptyRowsCount: 2, 
+     
       draggable: {
         enabled: true
       },
@@ -62,7 +76,6 @@ export class LayoutComponent implements OnInit {
 
   onDragStart(index: number): void {
     this.draggingIndex = index;
-    console.log('start')
   }
 
   onDragEnd(index: number): void {
@@ -72,12 +85,10 @@ export class LayoutComponent implements OnInit {
     },300)
     
   }
-  private loadComponent(component: any) {
-    debugger
+  loadComponent(component: any) {
     if(component)
     {
-      const index = componentConfig.findIndex(c=>c.name == component.controlName);
-     // this.container.clear();
+      const index = componentConfig.findIndex(c=>c.name == component.controlName);  
       this.container.last.createComponent(componentConfig[index].component);
     }
   }
@@ -88,13 +99,26 @@ export class LayoutComponent implements OnInit {
     }
   }
 
+  onControlSettingClick($event: MouseEvent | TouchEvent, item:any):void
+  {
+    $event.preventDefault();
+    $event.stopPropagation();
+    const modalRef =  this.modalService.open(TextboxSettingsComponent);
+    modalRef.componentInstance.activeModal = this.modalService
+    
+    
+  }
+
   removeItem($event: MouseEvent | TouchEvent, item:any): void {
     $event.preventDefault();
     $event.stopPropagation();
     this.items.splice(this.items.indexOf(item), 1);
   }
 
-
+  onSaveLayoutClick()
+  {
+    localStorage.setItem('layout', '');
+  }
  
 
 }
